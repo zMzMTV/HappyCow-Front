@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
 import Happy from "../assets/happycow.png";
@@ -7,6 +7,8 @@ import Happy from "../assets/happycow.png";
 const Login = ({ setUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const history = useHistory();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -18,6 +20,7 @@ const Login = ({ setUser }) => {
         <form onSubmit={handleSubmit} className="login-form">
           <h2>Se connecter</h2>
           <input
+            className=".input"
             type="email"
             name="email"
             value={email}
@@ -27,6 +30,7 @@ const Login = ({ setUser }) => {
             placeholder="Email"
           />
           <input
+            className=".input"
             type="password"
             name="password"
             value={password}
@@ -47,7 +51,7 @@ const Login = ({ setUser }) => {
               );
               if (response.data.token) {
                 setUser(response.data.token);
-                alert("got it");
+                history.push("/");
               } else {
                 alert("Une erreur est survenue");
               }

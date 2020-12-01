@@ -22,13 +22,13 @@ const Header = ({ setUser, token }) => {
         </div>
         <div>
           <Link className="header-icon">
-            <p>Restaurants & Stores</p>
+            <p className="none">Restaurants & Stores</p>
             <FontAwesomeIcon icon="angle-double-down" />
           </Link>
         </div>
         <div>
           <Link>
-            <p>Feed The Cow</p>
+            <p className="none">Feed The Cow</p>
           </Link>
         </div>
         {token ? (
