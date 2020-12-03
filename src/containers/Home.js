@@ -1,12 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {
-  CarouselProvider,
-  Slider,
-  Slide,
-  ButtonBack,
-  ButtonNext,
-} from "pure-react-carousel";
+import Carousel from "react-elastic-carousel";
 
 import HomeImg from "../assets/bg.home.webp";
 import data from "../assets/data/data.json";
@@ -91,78 +85,62 @@ const Home = ({ isLoading }) => {
       </div>
       <div className="card-container">
         <p className="restaurants-near">Restaurants Near Me</p>
-        <CarouselProvider
-          naturalSlideWidth={100}
-          naturalSlideHeight={125}
-          totalSlides={20}
-        >
+        <Carousel itemsToShow={1}>
           <div style={{ display: "flex", flexDirection: "row" }}>
             {restaurants.map((restau, index) => {
               if (index < 20) {
                 return (
                   <>
-                    <Slider>
-                      <Slide index={index}>
-                        <div key={index}>
+                    <div className="slider" index={index}>
+                      <div key={index}>
+                        <img
+                          className="card-img "
+                          src={restau.thumbnail}
+                          alt="Liste des restaurants référencé par Happy Cow Paris"
+                        />
+                        <div className="name-logo">
                           <img
-                            className="card-img "
-                            src={restau.thumbnail}
-                            alt="Liste des restaurants référencé par Happy Cow Paris"
+                            src={DisplayRightImg(restau)}
+                            alt="Category of the restaurant"
                           />
-                          <div className="name-logo">
-                            <img
-                              src={DisplayRightImg(restau)}
-                              alt="Category of the restaurant"
-                            />
-                            <h3>{restau.name}</h3>
-                          </div>
-                          <h4>
-                            {restau.address && restau.address.slice(-20, -7)}
-                          </h4>
-                          <div
-                            style={{
-                              flexDirection: "column",
-                              marginTop: "10px",
-                            }}
-                          >
-                            <FontAwesomeIcon
-                              icon="star"
-                              color={
-                                restau.rating > 0 ? "#fbb30c" : "lightgrey"
-                              }
-                            />
-                            <FontAwesomeIcon
-                              icon="star"
-                              color={
-                                restau.rating > 1 ? "#fbb30c" : "lightgrey"
-                              }
-                            />
-                            <FontAwesomeIcon
-                              icon="star"
-                              color={
-                                restau.rating > 2 ? "#fbb30c" : "lightgrey"
-                              }
-                            />
-                            <FontAwesomeIcon
-                              icon="star"
-                              color={
-                                restau.rating > 3 ? "#fbb30c" : "lightgrey"
-                              }
-                            />
-                            <FontAwesomeIcon
-                              icon="star"
-                              color={
-                                restau.rating > 4 ? "#fbb30c" : "lightgrey"
-                              }
-                            />
-                          </div>
-                          <span className="description">
-                            {restau.description &&
-                              restau.description.slice(0, 150) + "..."}
-                          </span>
+                          <h3>{restau.name}</h3>
                         </div>
-                      </Slide>
-                    </Slider>
+                        <h4>
+                          {restau.address && restau.address.slice(-20, -7)}
+                        </h4>
+                        <div
+                          style={{
+                            flexDirection: "column",
+                            marginTop: "10px",
+                          }}
+                        >
+                          <FontAwesomeIcon
+                            icon="star"
+                            color={restau.rating > 0 ? "#fbb30c" : "lightgrey"}
+                          />
+                          <FontAwesomeIcon
+                            icon="star"
+                            color={restau.rating > 1 ? "#fbb30c" : "lightgrey"}
+                          />
+                          <FontAwesomeIcon
+                            icon="star"
+                            color={restau.rating > 2 ? "#fbb30c" : "lightgrey"}
+                          />
+                          <FontAwesomeIcon
+                            icon="star"
+                            color={restau.rating > 3 ? "#fbb30c" : "lightgrey"}
+                          />
+                          <FontAwesomeIcon
+                            icon="star"
+                            color={restau.rating > 4 ? "#fbb30c" : "lightgrey"}
+                          />
+                        </div>
+                        <span className="description">
+                          {restau.description &&
+                            restau.description.slice(0, 150) + "..."}
+                        </span>
+                      </div>
+                    </div>
                   </>
                 );
               } else {
@@ -170,7 +148,7 @@ const Home = ({ isLoading }) => {
               }
             })}
           </div>
-        </CarouselProvider>
+        </Carousel>
       </div>
     </div>
   );
