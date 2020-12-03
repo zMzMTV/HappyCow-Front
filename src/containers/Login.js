@@ -18,7 +18,8 @@ const Login = ({ setUser }) => {
     <div>
       <div className="login-container">
         <form onSubmit={handleSubmit} className="login-form">
-          <h2>Se connecter</h2>
+          <h2>Login</h2>
+          <label className="label-login">Email</label>
           <input
             className=".input"
             type="email"
@@ -29,6 +30,7 @@ const Login = ({ setUser }) => {
             }}
             placeholder="Email"
           />
+          <label className="label-login">Password</label>
           <input
             className=".input"
             type="password"
@@ -57,9 +59,9 @@ const Login = ({ setUser }) => {
               }
             }}
           >
-            Se connecter
+            Login
           </button>
-          <Link to="/signup"> Pas encore de compte ? Inscris-toi !</Link>
+          <Link to="/signup"> No account yet ? Sign up !</Link>
           <img
             className="happy-logo"
             src={Happy}

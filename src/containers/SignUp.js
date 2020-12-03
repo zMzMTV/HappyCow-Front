@@ -3,6 +3,8 @@ import axios from "axios";
 import { Select, MenuItem } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 
+import Cow from "../assets/community2.jpg";
+
 const SignUp = ({ setUser }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -148,10 +150,12 @@ const SignUp = ({ setUser }) => {
 
   return (
     <div className="signup">
+      <img
+        src={Cow}
+        alt="Photo de jeunes gens à un festival végé qui pose avec la mascotte d'Happy Cow"
+      />
       <div className="signup-container">
-        <h1>
-          Rejoignez la plus grande communauté vegan et végétarienne du monde.
-        </h1>
+        <h1>Join the largest vegan and vegetarian community in the world.</h1>
         <form onSubmit={handleSubmit}>
           <div className="user-password">
             <div className="column">

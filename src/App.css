@@ -12,6 +12,11 @@ body {
   font-family: "Nunito";
 }
 
+::placeholder {
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
 div {
   display: block;
 }
@@ -78,6 +83,14 @@ p {
 .button-signup span {
   color: #9069cd;
   font-weight: 600;
+}
+
+.label-login {
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: white;
+  display: flex;
+  align-content: flex-start;
 }
 
 @media (max-width: 780px) {
@@ -163,9 +176,7 @@ input {
 }
 
 input {
-  color: (black, white);
   display: inline-block;
-  background-color: (rgb(255, 255, 255), rgb(59, 59, 59));
   padding-left: 8px;
 }
 
@@ -215,6 +226,7 @@ a:-webkit-any-link {
 /* SIGN UP */
 
 .signup {
+  display: flex;
   padding: 60px;
   background-color: white;
 }
@@ -291,6 +303,79 @@ h1 {
   h1 {
     font-size: 22px;
   }
+}
+
+@media (max-width: 1090px) {
+  .signup > img {
+    display: none;
+  }
+}
+
+/* HOME */
+
+.home-img {
+  height: 300px;
+  width: 100%;
+  position: relative;
+  background-size: cover;
+}
+
+.bg-img {
+  background-image: url("./assets/style.svg");
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 80px;
+  pointer-events: none;
+}
+
+.card-container {
+  width: 80%;
+  margin: auto;
+}
+
+.card-img {
+  width: 400px;
+  height: 250px;
+  border-radius: 7px;
+}
+
+h3 {
+  margin-top: 10px;
+  color: #268b42;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+h4 {
+  margin-top: 10px;
+  color: #777777;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.name-logo {
+  display: flex;
+  flex-direction: row;
+}
+
+.name-logo > img {
+  width: 23px;
+  margin-right: 10px;
+}
+
+.description {
+  margin-top: 10px;
+}
+
+.restaurants-near {
+  color: #444444;
+  font-size: 25px;
+  margin: 15px 85px;
+}
+
+element.style {
+  overflow-x: scroll;
 }
 
 /* FOOTER */

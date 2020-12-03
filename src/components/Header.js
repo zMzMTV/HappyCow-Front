@@ -49,7 +49,7 @@ const Header = ({ setUser, token }) => {
             </div>
             <div className="button-signup">
               <Link to="/signup">
-                <span>S'inscrire</span>
+                <span>Sign Up</span>
               </Link>
             </div>
           </>

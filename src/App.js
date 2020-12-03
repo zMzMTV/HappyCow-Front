@@ -5,11 +5,14 @@ import Cookie from "js-cookie";
 
 import Login from "./containers/Login";
 import SignUp from "./containers/SignUp";
+import Home from "./containers/Home";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 function App() {
   const [token, setToken] = useState(Cookie.get("userToken") || null);
+
+  const [isLoading, setIsLoading] = useState(true);
 
   const setUser = (tokenToSet) => {
     if (tokenToSet) {
@@ -34,7 +37,9 @@ function App() {
           <Route path="/signup">
             <SignUp setUser={setUser} />
           </Route>
-          <Route path="/"></Route>
+          <Route path="/">
+            <Home />
+          </Route>
         </Switch>
         <Footer />
       </Router>
