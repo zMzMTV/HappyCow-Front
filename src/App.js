@@ -3,6 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Cookie from "js-cookie";
 
+import Restaurant from "./containers/Restaurant";
 import Login from "./containers/Login";
 import SignUp from "./containers/SignUp";
 import Home from "./containers/Home";
@@ -31,6 +32,9 @@ function App() {
       <Router>
         <Header setUser={setUser} token={token} />
         <Switch>
+          <Route path="/restaurant/:id">
+            <Restaurant />
+          </Route>
           <Route path="/login">
             <Login setUser={setUser} />
           </Route>

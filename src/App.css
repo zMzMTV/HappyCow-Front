@@ -329,39 +329,12 @@ h1 {
   pointer-events: none;
 }
 
-.card-container {
-  width: 80%;
-  margin: auto;
-}
-
-.card-img {
-  width: 400px;
-  height: 250px;
-  border-radius: 7px;
-}
-
-h3 {
-  margin-top: 10px;
-  color: #268b42;
-  font-weight: 600;
-  font-size: 20px;
-}
-
-h4 {
-  margin-top: 10px;
-  color: #777777;
-  font-weight: 600;
-  font-size: 14px;
-}
-
 .name-logo {
   display: flex;
-  flex-direction: row;
 }
 
 .name-logo > img {
   width: 23px;
-  margin-right: 10px;
 }
 
 .description {
@@ -370,20 +343,141 @@ h4 {
 
 .restaurants-near {
   color: #444444;
-  font-size: 25px;
-  margin: 15px 85px;
+  font-size: 30px;
+  margin-left: 190px;
+  margin-top: 10px;
 }
 
 .slider {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 250px;
-  width: 100%;
-  background-color: #00008b;
-  color: #fff;
-  margin: 0 15px;
-  font-size: 4em;
+  height: 650px;
+  width: 50%;
+  margin: auto;
+  outline: none;
+}
+
+.slider img {
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+h3 {
+  color: #4caf50;
+  font-weight: 600;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+h4 {
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.desc {
+  margin-top: 10px;
+}
+
+@media (max-width: 1350px) {
+  .slider {
+    height: 650px;
+    width: 30%;
+    margin: 10px;
+  }
+  .slider .img-restau {
+    width: 200%;
+  }
+  div {
+    margin: 0;
+  }
+}
+
+@media (max-width: 1036px) {
+  .restaurants-near {
+    font-size: 25px;
+    margin-top: 10px;
+  }
+}
+
+/* Restaurant */
+
+.container {
+  width: 1000px;
+  margin: auto;
+}
+
+.logo-type {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 5%;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+.logo-type img {
+  width: 23px;
+  margin-right: 5px;
+}
+
+.restau-name {
+  color: white;
+  font-size: 40px;
+  font-weight: 600;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.logo-type-style {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.country {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+}
+
+.principal-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  margin-top: 40px;
+}
+
+.infos {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.restaurant-desc {
+  font-size: 20px;
+}
+
+.slider1 {
+  display: flex;
+  align-items: center;
+  height: 400px;
+  width: 60%;
+  outline: none;
+}
+
+.slider1 .img-slider {
+  height: 60%;
+  border-radius: 10px;
+}
+
+.map {
+  width: 500px;
+  height: 500px;
 }
 
 /* FOOTER */

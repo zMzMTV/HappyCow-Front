@@ -14,6 +14,8 @@ import Bakery from "../assets/bakery.svg";
 import HealthStore from "../assets/health-store.svg";
 import Pro from "../assets/professional.svg";
 import IceCream from "../assets/ice-cream.svg";
+import Juice from "../assets/juice-bar.svg";
+import Vendor from "../assets/market-vendor.svg";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
@@ -35,7 +37,7 @@ const Home = ({ isLoading }) => {
       return Delivery;
     } else if (type.type === "other") {
       return Other;
-    } else if (type.type === "bakery") {
+    } else if (type.type === "Bakery") {
       return Bakery;
     } else if (type.type === "Health Store") {
       return HealthStore;
@@ -43,25 +45,11 @@ const Home = ({ isLoading }) => {
       return Pro;
     } else if (type.type === "Ice Cream") {
       return IceCream;
+    } else if (type.type === "Juice Bar") {
+      return Juice;
+    } else if (type.type === "Market Vendor") {
+      return Vendor;
     }
-  };
-
-  const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-      paritialVisibilityGutter: 60,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2,
-      paritialVisibilityGutter: 50,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-      paritialVisibilityGutter: 30,
-    },
   };
 
   const restaurants = data.filter((item) => item.category === 0);
@@ -75,7 +63,11 @@ const Home = ({ isLoading }) => {
   return isLoading ? (
     <span>en cours de chargement</span>
   ) : (
-    <div style={{ backgroundColor: "white" }}>
+    <div
+      style={{
+        background: "linear-gradient(to right, #ffffff 0%, #9069cd 100%)",
+      }}
+    >
       <div className="home-bg">
         <img
           src={HomeImg}
@@ -83,18 +75,85 @@ const Home = ({ isLoading }) => {
           className="home-img"
         />
       </div>
-      <div className="card-container">
+      <div>
         <p className="restaurants-near">Restaurants Near Me</p>
-        <Carousel itemsToShow={1}>
-          <div style={{ display: "flex", flexDirection: "row" }}>
-            {restaurants.map((restau, index) => {
-              if (index < 20) {
-                return (
-                  <>
-                    <div className="slider" index={index}>
-                      <div key={index}>
+        <Carousel itemsToShow={3} pagination={false}>
+          {restaurants.map((restau, index) => {
+            if (restau.pictures[0] || restau.description) {
+              return (
+                <>
+                  <div className="slider" index={index}>
+                    <div key={index}>
+                      <Link restau to={`/restaurant/${restau.placeId}`}>
                         <img
-                          className="card-img "
+                          className="img-restau"
+                          src={restau.thumbnail}
+                          alt="Liste des restaurants référencé par Happy Cow Paris"
+                        />
+                        <div className="name-logo">
+                          <img
+                            className="logo-restau"
+                            src={DisplayRightImg(restau)}
+                            alt="Category of the restaurant"
+                          />
+                          <h3>{restau.name}</h3>
+                        </div>
+                      </Link>
+                      <h4>{restau.address && restau.address.slice(-20, -7)}</h4>
+                      <div
+                        style={{
+                          flexDirection: "column",
+                          marginTop: "10px",
+                          marginBottom: "10px",
+                        }}
+                      >
+                        <FontAwesomeIcon
+                          icon="star"
+                          color={restau.rating > 0 ? "#fbb30c" : "lightgrey"}
+                        />
+                        <FontAwesomeIcon
+                          icon="star"
+                          color={restau.rating > 1 ? "#fbb30c" : "lightgrey"}
+                        />
+                        <FontAwesomeIcon
+                          icon="star"
+                          color={restau.rating > 2 ? "#fbb30c" : "lightgrey"}
+                        />
+                        <FontAwesomeIcon
+                          icon="star"
+                          color={restau.rating > 3 ? "#fbb30c" : "lightgrey"}
+                        />
+                        <FontAwesomeIcon
+                          icon="star"
+                          color={restau.rating > 4 ? "#fbb30c" : "lightgrey"}
+                        />
+                      </div>
+                      <span className="desc">
+                        {restau.description &&
+                          restau.description.slice(0, 150) + "..."}
+                      </span>
+                    </div>
+                  </div>
+                </>
+              );
+            } else {
+              return null;
+            }
+          })}
+        </Carousel>
+      </div>
+      <div>
+        <p className="restaurants-near">Veg Store Near Me</p>
+        <Carousel itemsToShow={3} pagination={false}>
+          {shop.map((restau, index) => {
+            if (restau.pictures[0] || restau.description) {
+              return (
+                <>
+                  <div className="slider" index={index}>
+                    <div key={index}>
+                      <Link restau to={`/restaurant/${restau.placeId}`}>
+                        <img
+                          className="img-restau"
                           src={restau.thumbnail}
                           alt="Liste des restaurants référencé par Happy Cow Paris"
                         />
@@ -105,49 +164,116 @@ const Home = ({ isLoading }) => {
                           />
                           <h3>{restau.name}</h3>
                         </div>
-                        <h4>
-                          {restau.address && restau.address.slice(-20, -7)}
-                        </h4>
-                        <div
-                          style={{
-                            flexDirection: "column",
-                            marginTop: "10px",
-                          }}
-                        >
-                          <FontAwesomeIcon
-                            icon="star"
-                            color={restau.rating > 0 ? "#fbb30c" : "lightgrey"}
-                          />
-                          <FontAwesomeIcon
-                            icon="star"
-                            color={restau.rating > 1 ? "#fbb30c" : "lightgrey"}
-                          />
-                          <FontAwesomeIcon
-                            icon="star"
-                            color={restau.rating > 2 ? "#fbb30c" : "lightgrey"}
-                          />
-                          <FontAwesomeIcon
-                            icon="star"
-                            color={restau.rating > 3 ? "#fbb30c" : "lightgrey"}
-                          />
-                          <FontAwesomeIcon
-                            icon="star"
-                            color={restau.rating > 4 ? "#fbb30c" : "lightgrey"}
-                          />
-                        </div>
-                        <span className="description">
-                          {restau.description &&
-                            restau.description.slice(0, 150) + "..."}
-                        </span>
+                      </Link>
+                      <h4>{restau.address && restau.address.slice(-20, -7)}</h4>
+                      <div
+                        style={{
+                          flexDirection: "column",
+                          marginTop: "10px",
+                        }}
+                      >
+                        <FontAwesomeIcon
+                          icon="star"
+                          color={restau.rating > 0 ? "#fbb30c" : "lightgrey"}
+                        />
+                        <FontAwesomeIcon
+                          icon="star"
+                          color={restau.rating > 1 ? "#fbb30c" : "lightgrey"}
+                        />
+                        <FontAwesomeIcon
+                          icon="star"
+                          color={restau.rating > 2 ? "#fbb30c" : "lightgrey"}
+                        />
+                        <FontAwesomeIcon
+                          icon="star"
+                          color={restau.rating > 3 ? "#fbb30c" : "lightgrey"}
+                        />
+                        <FontAwesomeIcon
+                          icon="star"
+                          color={restau.rating > 4 ? "#fbb30c" : "lightgrey"}
+                        />
                       </div>
+                      <span>
+                        {restau.description &&
+                          restau.description.slice(0, 150) + "..."}
+                      </span>
                     </div>
-                  </>
-                );
-              } else {
-                return null;
-              }
-            })}
-          </div>
+                  </div>
+                </>
+              );
+            } else {
+              return null;
+            }
+          })}
+        </Carousel>
+      </div>
+      <div>
+        <p className="restaurants-near">Juice Bar and Vendor Near Me</p>
+        <Carousel itemsToShow={3} pagination={false}>
+          {market.map((restau, index) => {
+            if (
+              restau.pictures[0] ||
+              restau.description ||
+              restau.name !== "Bojus"
+            ) {
+              return (
+                <>
+                  <div className="slider" index={index}>
+                    <div key={index}>
+                      <Link restau to={`/restaurant/${restau.placeId}`}>
+                        <img
+                          className="img-restau"
+                          src={restau.thumbnail}
+                          alt="Liste des restaurants référencé par Happy Cow Paris"
+                        />
+                        <div className="name-logo">
+                          <img
+                            src={DisplayRightImg(restau)}
+                            alt="Category of the restaurant"
+                          />
+                          <h3>{restau.name}</h3>
+                        </div>
+                      </Link>
+                      <h4>{restau.address && restau.address.slice(-20, -7)}</h4>
+                      <div
+                        style={{
+                          flexDirection: "column",
+                          marginTop: "10px",
+                        }}
+                      >
+                        <FontAwesomeIcon
+                          icon="star"
+                          color={restau.rating > 0 ? "#fbb30c" : "lightgrey"}
+                        />
+                        <FontAwesomeIcon
+                          icon="star"
+                          color={restau.rating > 1 ? "#fbb30c" : "lightgrey"}
+                        />
+                        <FontAwesomeIcon
+                          icon="star"
+                          color={restau.rating > 2 ? "#fbb30c" : "lightgrey"}
+                        />
+                        <FontAwesomeIcon
+                          icon="star"
+                          color={restau.rating > 3 ? "#fbb30c" : "lightgrey"}
+                        />
+                        <FontAwesomeIcon
+                          icon="star"
+                          color={restau.rating > 4 ? "#fbb30c" : "lightgrey"}
+                        />
+                      </div>
+                      <span className="marge">
+                        {restau.description &&
+                          restau.description.slice(0, 150) + "..."}
+                      </span>
+                    </div>
+                  </div>
+                </>
+              );
+            } else {
+              return null;
+            }
+          })}
         </Carousel>
       </div>
     </div>
