@@ -99,7 +99,6 @@ p {
     margin-left: 7px;
   }
   p {
-    font-weight: 500;
     margin-right: 7px;
   }
   .button-login {
@@ -110,7 +109,7 @@ p {
   }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 580px) {
   .header-logo {
     height: 40px;
     margin-left: 10px;
@@ -473,7 +472,7 @@ h4 {
   align-items: center;
   height: 60%;
   outline: none;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
   margin-top: 60px;
 }
 
@@ -486,6 +485,7 @@ h4 {
   width: 500px;
   height: 500px;
   margin: auto;
+  margin-bottom: 25px;
 }
 
 .mapMarker {
@@ -499,7 +499,35 @@ h4 {
   }
 }
 
-@media (max-width: 990px) {
+@media (max-width: 1020px) {
+  .container {
+    width: 800px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .infos {
+    display: flex;
+    flex-direction: column;
+    margin-left: 140px;
+  }
+  .principal-info {
+    flex-direction: row;
+    align-items: center;
+    margin-top: 40px;
+  }
+  .responsive-margin {
+    margin-left: 10px;
+  }
+  .container {
+    width: 700px;
+  }
+}
+
+@media (max-width: 820px) {
+  .container {
+    width: 600px;
+  }
 }
 
 @media (max-width: 700px) {
@@ -508,7 +536,13 @@ h4 {
   }
 }
 
-@media (max-width: 572px) {
+@media (max-width: 663px) {
+  .container {
+    width: 400px;
+  }
+}
+
+@media (max-width: 580px) {
   .restau-name {
     font-size: 35px;
   }

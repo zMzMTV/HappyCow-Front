@@ -165,7 +165,9 @@ const Restaurant = () => {
                   color: DisplayRightColor(data),
                 }}
               />
-              <p style={{ fontWeight: 400 }}>10h30 - 22h30</p>
+              <p className="responsive-margin" style={{ fontWeight: 400 }}>
+                10h30 - 22h30
+              </p>
             </div>
             <div className="principal-info">
               <FontAwesomeIcon
@@ -176,7 +178,9 @@ const Restaurant = () => {
                   color: DisplayRightColor(data),
                 }}
               />
-              <p style={{ fontWeight: 400 }}>{data.phone}</p>
+              <p className="responsive-margin" style={{ fontWeight: 400 }}>
+                {data.phone}
+              </p>
             </div>
             <div className="principal-info">
               <FontAwesomeIcon
@@ -187,7 +191,10 @@ const Restaurant = () => {
                   color: DisplayRightColor(data),
                 }}
               />
-              <p style={{ fontWeight: 400, fontSize: "17px" }}>
+              <p
+                className="responsive-margin"
+                style={{ fontWeight: 400, fontSize: "17px" }}
+              >
                 {data.address}
               </p>
             </div>
