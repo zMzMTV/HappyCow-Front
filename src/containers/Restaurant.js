@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Carousel from "react-elastic-carousel";
-import { GoogleMapReact } from "google-maps-react";
+import GoogleMapReact from "google-map-react";
 
 import HomeImg from "../assets/bg.home.webp";
 import data from "../assets/data/data.json";
@@ -27,9 +27,10 @@ import {
   faClock,
   faPhoneAlt,
   faMapMarkerAlt,
+  faMapMarker,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-library.add(faStar, faHome, faClock, faPhoneAlt, faMapMarkerAlt);
+library.add(faStar, faHome, faClock, faPhoneAlt, faMapMarkerAlt, faMapMarker);
 
 const Restaurant = () => {
   const { id } = useParams();
@@ -99,7 +100,7 @@ const Restaurant = () => {
   const AnyReactComponent = () => (
     <FontAwesomeIcon icon="map-marker" className="mapMarker" />
   );
-
+  console.log(data);
   return data ? (
     <div>
       <div style={{ backgroundColor: DisplayRightColor(data), padding: "1px" }}>
@@ -160,7 +161,7 @@ const Restaurant = () => {
                   color: DisplayRightColor(data),
                 }}
               />
-              <p>10h30 - 22h30</p>
+              <p style={{ fontWeight: 400 }}>10h30 - 22h30</p>
             </div>
             <div className="principal-info">
               <FontAwesomeIcon
@@ -171,7 +172,7 @@ const Restaurant = () => {
                   color: DisplayRightColor(data),
                 }}
               />
-              <p>{data.phone}</p>
+              <p style={{ fontWeight: 400 }}>{data.phone}</p>
             </div>
             <div className="principal-info">
               <FontAwesomeIcon
@@ -182,7 +183,9 @@ const Restaurant = () => {
                   color: DisplayRightColor(data),
                 }}
               />
-              <p>{data.address}</p>
+              <p style={{ fontWeight: 400, fontSize: "17px" }}>
+                {data.address}
+              </p>
             </div>
           </div>
           <div style={{ marginTop: "35px" }}>
@@ -192,54 +195,57 @@ const Restaurant = () => {
           </div>
         </div>
         <div className="container">
-          <Carousel itemsToShow={3} pagination={false}>
-            <div className="slider1">
-              <img
-                className="img-slider"
-                src={data.pictures && data.pictures[0]}
-                alt="Photo of the restaurant and some of their product"
+          {data.pictures[0] && (
+            <Carousel itemsToShow={3} pagination={false}>
+              <div className="slider1">
+                <img
+                  className="img-slider"
+                  src={data.pictures && data.pictures[0]}
+                  alt="Photo of the restaurant and some of their product"
+                />
+              </div>
+              <div className="slider1">
+                <img
+                  className="img-slider"
+                  src={data.pictures && data.pictures[1]}
+                  alt="Photo of the restaurant and some of their product"
+                />
+              </div>
+              <div className="slider1">
+                <img
+                  className="img-slider"
+                  src={data.pictures && data.pictures[2]}
+                  alt="Photo of the restaurant and some of their product"
+                />
+              </div>
+              <div className="slider1">
+                <img
+                  className="img-slider"
+                  src={data.pictures && data.pictures[3]}
+                  alt="Photo of the restaurant and some of their product"
+                />
+              </div>
+            </Carousel>
+          )}
+
+          <div className="map">
+            <GoogleMapReact
+              bootstrapURLKeys={{
+                key: "AIzaSyDwmry2DKRYxcf9bia6kny7cZ7CErU1AgU",
+              }}
+              defaultCenter={{
+                lat: data.location && data.location.lat,
+                lng: data.location && data.location.lng,
+              }}
+              defaultZoom={11}
+            >
+              <AnyReactComponent
+                lat={data.location && data.location.lat}
+                lng={data.location && data.location.lng}
+                text={data.name}
               />
-            </div>
-            <div className="slider1">
-              <img
-                className="img-slider"
-                src={data.pictures && data.pictures[1]}
-                alt="Photo of the restaurant and some of their product"
-              />
-            </div>
-            <div className="slider1">
-              <img
-                className="img-slider"
-                src={data.pictures && data.pictures[2]}
-                alt="Photo of the restaurant and some of their product"
-              />
-            </div>
-            <div className="slider1">
-              <img
-                className="img-slider"
-                src={data.pictures && data.pictures[3]}
-                alt="Photo of the restaurant and some of their product"
-              />
-            </div>
-          </Carousel>
-        </div>
-        <div className="map">
-          <GoogleMapReact
-            bootstrapURLKeys={{
-              key: "AIzaSyDwmry2DKRYxcf9bia6kny7cZ7CErU1AgU",
-            }}
-            defaultCenter={{
-              lat: data.location && data.location.lat,
-              lng: data.location && data.location.lng,
-            }}
-            defaultZoom={11}
-          >
-            <AnyReactComponent
-              lat={data.location && data.location.lat}
-              lng={data.location && data.location.lng}
-              text={data.name}
-            />
-          </GoogleMapReact>
+            </GoogleMapReact>
+          </div>
         </div>
       </div>
     </div>

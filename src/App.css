@@ -329,6 +329,11 @@ h1 {
   pointer-events: none;
 }
 
+.container-home {
+  width: 1320px;
+  margin: auto;
+}
+
 .name-logo {
   display: flex;
 }
@@ -344,23 +349,23 @@ h1 {
 .restaurants-near {
   color: #444444;
   font-size: 30px;
-  margin-left: 190px;
-  margin-top: 10px;
+  margin-left: 55px;
+  margin-top: 50px;
 }
 
 .slider {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 650px;
-  width: 50%;
+  height: 50%;
   margin: auto;
   outline: none;
 }
 
-.slider img {
+.slider .img-restau {
   border-radius: 10px;
   margin-top: 10px;
+  width: 50%;
 }
 
 h3 {
@@ -456,6 +461,7 @@ h4 {
 .infos {
   display: flex;
   flex-wrap: wrap;
+  margin-left: 140px;
 }
 
 .restaurant-desc {
@@ -465,19 +471,47 @@ h4 {
 .slider1 {
   display: flex;
   align-items: center;
-  height: 400px;
-  width: 60%;
+  height: 60%;
   outline: none;
+  margin-bottom: 60px;
+  margin-top: 60px;
 }
 
 .slider1 .img-slider {
-  height: 60%;
+  width: 60%;
   border-radius: 10px;
 }
 
 .map {
   width: 500px;
   height: 500px;
+  margin: auto;
+}
+
+.mapMarker {
+  font-size: 25px;
+  color: #ea4335;
+}
+
+@media (max-width: 1500px) {
+  .logo-type {
+    width: 10%;
+  }
+}
+
+@media (max-width: 990px) {
+}
+
+@media (max-width: 700px) {
+  .logo-type {
+    width: 15%;
+  }
+}
+
+@media (max-width: 572px) {
+  .restau-name {
+    font-size: 35px;
+  }
 }
 
 /* FOOTER */
