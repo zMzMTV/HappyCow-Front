@@ -85,7 +85,7 @@ const Home = ({ isLoading }) => {
                   <>
                     <div className="slider" index={index}>
                       <div key={index}>
-                        <Link restau to={`/restaurant/${restau.placeId}`}>
+                        <Link to={`/restaurant/${restau.placeId}`}>
                           <img
                             className="img-restau"
                             src={restau.thumbnail}
@@ -154,7 +154,7 @@ const Home = ({ isLoading }) => {
                   <>
                     <div className="slider" index={index}>
                       <div key={index}>
-                        <Link restau to={`/restaurant/${restau.placeId}`}>
+                        <Link to={`/restaurant/${restau.placeId}`}>
                           <img
                             className="img-restau"
                             src={restau.thumbnail}
@@ -226,7 +226,7 @@ const Home = ({ isLoading }) => {
                 <>
                   <div className="slider" index={index}>
                     <div key={index}>
-                      <Link restau to={`/restaurant/${restau.placeId}`}>
+                      <Link to={`/restaurant/${restau.placeId}`}>
                         <img
                           className="img-restau"
                           src={restau.thumbnail}

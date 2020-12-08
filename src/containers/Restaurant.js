@@ -35,6 +35,7 @@ library.add(faStar, faHome, faClock, faPhoneAlt, faMapMarkerAlt, faMapMarker);
 const Restaurant = () => {
   const { id } = useParams();
   const [data, setData] = useState({});
+  const [loading, setLoading] = useState(true);
 
   const DisplayRightColor = (type) => {
     if (
@@ -55,6 +56,8 @@ const Restaurant = () => {
       return "blue";
     } else if (type.type === "Juice Bar") {
       return "orange";
+    } else if (type.type === "Health Store") {
+      return "#B59905";
     }
   };
 
@@ -93,6 +96,7 @@ const Restaurant = () => {
         return id === data.placeId.toString();
       });
       setData(response);
+      setLoading(false);
     };
     fetchData();
   }, [id]);
@@ -100,8 +104,8 @@ const Restaurant = () => {
   const AnyReactComponent = () => (
     <FontAwesomeIcon icon="map-marker" className="mapMarker" />
   );
-  console.log(data);
-  return data ? (
+  console.log(Data);
+  return loading === false ? (
     <div>
       <div style={{ backgroundColor: DisplayRightColor(data), padding: "1px" }}>
         <p className="restau-name">{data.name}</p>
@@ -195,43 +199,24 @@ const Restaurant = () => {
           </div>
         </div>
         <div className="container">
-          {data.pictures[0] && (
-            <Carousel itemsToShow={3} pagination={false}>
-              <div className="slider1">
-                <img
-                  className="img-slider"
-                  src={data.pictures && data.pictures[0]}
-                  alt="Photo of the restaurant and some of their product"
-                />
-              </div>
-              <div className="slider1">
-                <img
-                  className="img-slider"
-                  src={data.pictures && data.pictures[1]}
-                  alt="Photo of the restaurant and some of their product"
-                />
-              </div>
-              <div className="slider1">
-                <img
-                  className="img-slider"
-                  src={data.pictures && data.pictures[2]}
-                  alt="Photo of the restaurant and some of their product"
-                />
-              </div>
-              <div className="slider1">
-                <img
-                  className="img-slider"
-                  src={data.pictures && data.pictures[3]}
-                  alt="Photo of the restaurant and some of their product"
-                />
-              </div>
-            </Carousel>
-          )}
-
+          <Carousel itemsToShow={3} pagination={false}>
+            {data.pictures.map((pic, index) => {
+              console.log(pic);
+              return (
+                <div className="slider1">
+                  <img
+                    className="img-slider"
+                    src={pic}
+                    alt="Photo of the restaurant and some of their product"
+                  />
+                </div>
+              );
+            })}
+          </Carousel>
           <div className="map">
             <GoogleMapReact
               bootstrapURLKeys={{
-                key: "AIzaSyDwmry2DKRYxcf9bia6kny7cZ7CErU1AgU",
+                key: "",
               }}
               defaultCenter={{
                 lat: data.location && data.location.lat,
