@@ -45,7 +45,7 @@ const Login = ({ setUser }) => {
             type="submit"
             onClick={async () => {
               const response = await axios.post(
-                "http://localhost:3001/user/login",
+                "https://zmzm-happy-cow.herokuapp.com/login",
                 {
                   email: email,
                   password: password,
