@@ -9,6 +9,7 @@ import SignUp from "./containers/SignUp";
 import Home from "./containers/Home";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import SearchBar from "./components/SearchBar";
 
 function App() {
   const [token, setToken] = useState(Cookie.get("userToken") || null);
@@ -34,6 +35,9 @@ function App() {
         <Switch>
           <Route path="/restaurant/:id">
             <Restaurant />
+          </Route>
+          <Route path="/result/:search">
+            <SearchBar />
           </Route>
           <Route path="/login">
             <Login setUser={setUser} />

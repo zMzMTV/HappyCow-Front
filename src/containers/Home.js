@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import Carousel from "react-elastic-carousel";
 
 import HomeImg from "../assets/bg.home.webp";
@@ -16,13 +16,17 @@ import Pro from "../assets/professional.svg";
 import IceCream from "../assets/ice-cream.svg";
 import Juice from "../assets/juice-bar.svg";
 import Vendor from "../assets/market-vendor.svg";
+import Donut from "../assets/donut.jpg";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-library.add(faStar);
+library.add(faStar, faSearch);
 
 const Home = ({ isLoading }) => {
+  const [search, setSearch] = useState("");
+  let history = useHistory();
+
   const DisplayRightImg = (type) => {
     // params type === restau so type.type = restau.type
     if (type.type === "veg-options") {
@@ -68,12 +72,28 @@ const Home = ({ isLoading }) => {
         background: "linear-gradient(to right, #ffffff 0%, #9069cd 100%)",
       }}
     >
-      <div className="home-bg">
-        <img
-          src={HomeImg}
-          alt="Tarte pas très apétissante"
-          className="home-img"
-        />
+      <div class="hero-image">
+        <div class="hero-text">
+          <form
+            className="form-home"
+            onSubmit={(event) => {
+              event.preventDefault();
+              history.push("/result/" + search);
+            }}
+          >
+            <p>Find vegan restaurants near by</p>
+            <input
+              className="search-bar"
+              type="text"
+              value={search}
+              placeholder="Search for city, region, or zipcode"
+              onChange={(event) => {
+                const value = event.target.value;
+                setSearch(value);
+              }}
+            />
+          </form>
+        </div>
       </div>
       <div className="container-home">
         <div>

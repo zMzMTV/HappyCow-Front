@@ -312,20 +312,48 @@ h1 {
 
 /* HOME */
 
-.home-img {
-  height: 300px;
-  width: 100%;
-  position: relative;
+.hero-image {
+  background-image: url("./assets/donut.jpg");
+  height: 450px;
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
 }
 
-.bg-img {
-  background-image: url("./assets/style.svg");
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  height: 80px;
-  pointer-events: none;
+.hero-text {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.form-home {
+  margin-top: 100px;
+}
+
+.hero-text p {
+  color: white;
+  font-size: 35px;
+  margin-left: 100px;
+}
+
+.search-bar {
+  border: 3px solid #9069cd;
+  height: 30px;
+  width: 120%;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.search-bar:hover {
+  background-color: #663dff;
+  background-image: linear-gradient(
+    319deg,
+    #663dff 0%,
+    #aa00ff 37%,
+    #cc4499 100%
+  );
 }
 
 .container-home {
@@ -348,8 +376,9 @@ h1 {
 .restaurants-near {
   color: #444444;
   font-size: 30px;
-  margin-left: 55px;
+  margin-left: 5%;
   margin-top: 50px;
+  margin-bottom: 20px;
 }
 
 .slider {
@@ -396,12 +425,42 @@ h4 {
   div {
     margin: 0;
   }
+  .container-home {
+    width: 1100px;
+  }
+  .restaurants-near {
+    margin-left: 15%;
+  }
+}
+
+@media (max-width: 1115px) {
+  .container-home {
+    width: 900px;
+  }
+  .restaurants-near {
+    margin-bottom: 5px;
+  }
+  .slider {
+    height: 70%;
+  }
+  .slider .img-restau {
+    width: 70%;
+  }
 }
 
 @media (max-width: 1036px) {
   .restaurants-near {
     font-size: 25px;
     margin-top: 10px;
+  }
+}
+
+@media (max-width: 900px) {
+  .container-home {
+    width: 600px;
+  }
+  .restaurants-near {
+    margin-bottom: 5px;
   }
 }
 
@@ -548,6 +607,19 @@ h4 {
   }
 }
 
+/* SEARCH PAGE */
+
+.title-search {
+  text-align: center;
+}
+
+.container-search {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 400px;
+  width: 800px;
+}
+
 /* FOOTER */
 
 .footer {
@@ -557,13 +629,12 @@ h4 {
   padding: 40px 0;
   color: black;
   background-color: #9069cd;
-  padding-top: 70px;
 }
 
 .footer > div {
-  width: 30%;
+  width: 33%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   font-size: 15px;
 }
 
