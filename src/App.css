@@ -538,6 +538,8 @@ h4 {
 .slider1 .img-slider {
   width: 60%;
   border-radius: 10px;
+  min-height: 200px;
+  max-height: 200px;
 }
 
 .map {
