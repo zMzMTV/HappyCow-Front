@@ -65,13 +65,13 @@ const SearchBar = () => {
 
   return (
     <div style={{ backgroundColor: "white", padding: "1px" }}>
-      <h3 className="title-search">Results for : {search}</h3>
+      <h3 className="title-search">Results for "{search}".</h3>
       <div className="container-search">
         {res.map((restau, index) => {
           if (restau.pictures[0] || restau.description) {
             return (
               <>
-                <div key={index}>
+                <div className="basis" key={index}>
                   <Link to={`/restaurant/${restau.placeId}`}>
                     <img
                       className="img-restau"
